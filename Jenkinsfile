@@ -4,9 +4,10 @@ pipeline{
         PATH = "${PATH}:${getTerraformPath()}"
     }
     stages{
-        stage("Terraform-init"){
+        stage("Terraform-init and apply" ){
             steps{
                 sh "terraform init"
+                sh "terraform apply -var-file=dev.tfvara -auto-approve"
             }
         }
     }
